@@ -1,0 +1,9 @@
+I was making additional changes to a staged <file>, and accidently inserted some random characters at 
+random places (worst case scenario) .
+
+I could revert to the staged version by: (1) committing the staged <file> and (2) git checkout HEAD,
+but if I do not want to lose the changes made before the "accident" by: git checkout --patch <file>  
+(According to0 SO.) OR git checkout --<file>  Which will leave the <file> staged. (According to Git.)
+
+In order to selectively discard changes to the working <file> use: git checkout --patch <file> <-- WORKS!
+

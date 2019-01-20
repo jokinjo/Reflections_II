@@ -1,0 +1,2 @@
+The staging "area" lists the files that are changed from those in the working directory
+to see the diff between the working directory and staging area use git diff --???
