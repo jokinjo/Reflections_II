@@ -1,0 +1,1 @@
+The /.git subdirectory is located in the root directory, i.e., the dir named for the project.

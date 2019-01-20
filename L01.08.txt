@@ -1,0 +1,6 @@
+Ability to recreate the project state at a preselected points in the developement.
+
+to view a commit:
+  use log - to view commit history an branching structure
+  checkout - to load the project state as of the particular commit
+  cat-file - particulars of a given commit, incl branching
