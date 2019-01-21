@@ -1,6 +1,0 @@
-The staging "area" lists the files that are changed from those in the working directory
-To see the diff between the working directory and staging area use git diff --staged OR git diff --cached.
-
-git diff shows changes in the staged files and the last commit.
-
-If there are no staged changes then ???

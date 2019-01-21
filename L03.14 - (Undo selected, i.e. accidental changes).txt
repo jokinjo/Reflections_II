@@ -2,8 +2,13 @@ I was making additional changes to a staged <file>, and accidently inserted some
 random places (worst case scenario) .
 
 I could revert to the staged version by: (1) committing the staged <file> and (2) git checkout HEAD,
-but if I do not want to lose the changes made before the "accident" by: git checkout --patch <file>  
-(According to0 SO.) OR git checkout --<file>  Which will leave the <file> staged. (According to Git.)
+BUT if I do not want to lose the changes made before the "accident"
+ by: git checkout --patch <file> which presents the changes in "diff chunks." (According to SO.) 
+ OR git checkout --<file>  Which will leave the <file> state as of the last commit. (According to Git.)
 
 In order to selectively discard changes to the working <file> use: git checkout --patch <file> <-- WORKS!
+ Note: All of the reversions will take the <file> back to the last commit, i.e. before the staged version!
+  In this case, i.e. accepting ALL of the reversions presented by git checkout --patch <file>, 
+   How to de-add (i.e. overwrite the WD version with the staged version)
+   in order get the staged changes into the WD version???
 
