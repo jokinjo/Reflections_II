@@ -1,7 +1,0 @@
-  (Assuming that HEAD is not in "detached state")
-  
-What does HEAD@{n} refer to in, e.g. git resetHEAD@{n}
-
-HEAD^ is the second to last commit, etc
-
-HEAD~n is the n-th commit prior the last commit (HEAD)

@@ -1,1 +1,0 @@
-Is git checkout HEAD consistant with git check out <commit>?

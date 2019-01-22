@@ -1,1 +1,3 @@
-Multiple file commits are neccessary to capture the state of the program -- But is it space efficient too capture the state of files that have not changed?
+Multiple file commits are neccessary to capture the state of the program 
+-- But is it space efficient too capture the state of files that have not changed?
+   OR does Git actually use patches?
