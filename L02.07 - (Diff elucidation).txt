@@ -1,0 +1,146 @@
+#  Please NOTE: To see #Comments Text Style (to highlight annotations w/BLUE text), choose Language : JMS.
+
+# The staging "area OR index" lists the files that are changed from those in the last commit (and are set to be commited) 
+# To see the diff between the working directory and staging area use git diff --staged OR git diff --cached, and
+#  git diff shows changes in the staged files and the last commit.
+
+# If there are no staged changes then git diff shows changes to working directory files on top of the last commit,
+# and git diff --staged shows nothing.
+ 
+# If there are no changes in the working directory, git diff shows nothing, 
+#  and git diff -staged shows diff from staged files and last commit.  
+# If Staged = Last Commit, git diff --staged shows nothing
+#  and git diff shows the changes in WD since Last Commit.
+ 
+ 
+# Below: The preliminary object is to get:
+#   YYY First changes are staged and no further changes, and
+#   XXX First Changes are staged and Second Changes are in WD (not staged)
+#        Then experiment with git-diff AND git-diff --staged.
+
+ JMS@DESKTOP-FV93VFD MINGW64 ~/Desktop/Udacity-Git_(Google)_JAN2019/Reflections (TryToRevertLastCommit)
+$ git status
+On branch TryToRevertLastCommit
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+        modified:   XXX.txt  # First Change
+        modified:   YYY.txt  # First Change
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+
+JMS@DESKTOP-FV93VFD MINGW64 ~/Desktop/Udacity-Git_(Google)_JAN2019/Reflections (TryToRevertLastCommit)
+$ git add XXX.txt
+
+JMS@DESKTOP-FV93VFD MINGW64 ~/Desktop/Udacity-Git_(Google)_JAN2019/Reflections (TryToRevertLastCommit)
+$ git status
+On branch TryToRevertLastCommit
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+        modified:   XXX.txt  #  First Change
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+        modified:   YYY.txt  # First Change
+
+
+JMS@DESKTOP-FV93VFD MINGW64 ~/Desktop/Udacity-Git_(Google)_JAN2019/Reflections (TryToRevertLastCommit)
+$ git status
+On branch TryToRevertLastCommit
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+        modified:   XXX.txt  # First Change (to be committed)
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+        modified:   XXX.txt  # Second Change
+        modified:   YYY.txt  # First Change
+
+
+JMS@DESKTOP-FV93VFD MINGW64 ~/Desktop/Udacity-Git_(Google)_JAN2019/Reflections (TryToRevertLastCommit)
+$ git commit -m "Try git commit  (w/NO -a or file  reference)"  # SEE Note at the bottom.
+[TryToRevertLastCommit 21ce78f] Try git commit  (w/NO -a or file  reference)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+#  Commits XXX.txt w/ First Change
+
+JMS@DESKTOP-FV93VFD MINGW64 ~/Desktop/Udacity-Git_(Google)_JAN2019/Reflections (TryToRevertLastCommit)
+$ git status
+On branch TryToRevertLastCommit
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+        modified:   XXX.txt  # Second Change
+        modified:   YYY.txt  # First Change
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+JMS@DESKTOP-FV93VFD MINGW64 ~/Desktop/Udacity-Git_(Google)_JAN2019/Reflections (TryToRevertLastCommit)
+$ git diff  #  Here staging index is empty, and Working Directory has XXX-Second-Change & YYY-First-Change
+            #  Recall that the WD has changes not yet staged.
+diff --git a/XXX.txt b/XXX.txt
+index 70b482a..d7b66bc 100644
+--- a/XXX.txt
++++ b/XXX.txt
+@@ -1 +1 @@
+-XXX X  1st Change  #  Newly Committed w/ 1st change (& StagingIndex = null) vs. WD w/ 2nd Change 
++XXX X  2nd Change  #  So, diff --staged = null AND diff looks at Committed vs. WD
+diff --git a/YYY.txt b/YYY.txt
+index 1f76594..d7bef0c 100644
+--- a/YYY.txt
++++ b/YYY.txt
+@@ -1 +1 @@         
+-YYY                #  Originaly Committed (& StagingIndex = null) vs. WD w/ 1st Change 
++YYY  1st change    #  So, diff --staged = null AND diff looks at Committed vs. WD
+
+
+JMS@DESKTOP-FV93VFD MINGW64 ~/Desktop/Udacity-Git_(Google)_JAN2019/Reflections (TryToRevertLastCommit)
+$ git diff --staged #  null because (StagingIndex is empty)
+
+JMS@DESKTOP-FV93VFD MINGW64 ~/Desktop/Udacity-Git_(Google)_JAN2019/Reflections (TryToRevertLastCommit)
+$ git add -A        #  Stage XXX-Second-Change and YYY-First-Change
+
+JMS@DESKTOP-FV93VFD MINGW64 ~/Desktop/Udacity-Git_(Google)_JAN2019/Reflections (TryToRevertLastCommit)
+$ git status
+On branch TryToRevertLastCommit
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+        modified:   XXX.txt
+        modified:   YYY.txt
+
+
+JMS@DESKTOP-FV93VFD MINGW64 ~/Desktop/Udacity-Git_(Google)_JAN2019/Reflections (TryToRevertLastCommit)
+$ git diff --staged  #  WD has no add'l changes, AND now, XXX-Second-Change and YYY-First-Change are staged.
+diff --git a/XXX.txt b/XXX.txt
+index 70b482a..d7b66bc 100644
+--- a/XXX.txt
++++ b/XXX.txt
+@@ -1 +1 @@
+-XXX X  1st Change  #  Newly Committed vs. staged changes AND (WD = staged version)
++XXX X  2nd Change  #  So, diff = null AND diff --staged yields Committed vs. staged version.
+diff --git a/YYY.txt b/YYY.txt
+index 1f76594..d7bef0c 100644
+--- a/YYY.txt
++++ b/YYY.txt
+@@ -1 +1 @@
+-YYY                #  Same as above w/ Originaly Committed vs.  YYY-First-Change
++YYY  1st change
+
+JMS@DESKTOP-FV93VFD MINGW64 ~/Desktop/Udacity-Git_(Google)_JAN2019/Reflections (TryToRevertLastCommit)
+$ git diff          #  Null because WD = Staging Index
+
+JMS@DESKTOP-FV93VFD MINGW64 ~/Desktop/Udacity-Git_(Google)_JAN2019/Reflections (TryToRevertLastCommit)
+$  # Ready 
+
+#Above: 
+#  Note: The unstaged changes were automaticaly included in the commit if a specific file is listed to be committed.
+#        e.g. git commit XXX.txt -m "~~" commits XXX.txt and YYY.txt.  (I am pretty sure?)

@@ -1,0 +1,4 @@
+I commited experimental changes on master, but I wanted to save them to a new branch EasyMode.
+
+So, (1) create new branch, EasyMode, (Do not switch to the branch.) (2) git reset --hard HEAD^
+Now the changes are on the new branch, and the master/HEAD is rest to the commit before the experimental changes
