@@ -1,0 +1,9 @@
+A pull request is the assertion that my local version is ready to be merged into a remote branch.
+
+The administrator looks at phe request, which includes ??.. a summary of changes and ..?? so thqt the administrator can 
+determine whether the changes on my branch perform as purported and will merge into the remote branch without 
+any conflicts with changes to the remote since I first downloaded the remote branch.
+
+It is to be hoped that at least there are no conflicts with current remote branch, so I will get the up-to-date remote
+to merge my branch.
+
